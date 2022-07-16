@@ -1,0 +1,19 @@
+def quadratic_equation(a=1, b=3, c=-4):
+    input_coefficient = list(map(float, input('Введите 3 числа: ').split()))
+    for _ in input_coefficient:
+        a = input_coefficient[0]
+        b = input_coefficient[1]
+        c = input_coefficient[2]
+
+    discriminant = b ** 2 - 4 * a * c
+    print(f'Дискриминант = {discriminant}')
+    if discriminant < 0:
+        return 'Нет корней'
+    elif discriminant == 0:
+        x = -b / (2 * a)
+        return f'x = {round(x, 2)}'
+    else:
+        x1 = (-b + discriminant ** 0.5) / (2 * a)
+        x2 = (-b - discriminant ** 0.5) / (2 * a)
+        return (f'x_1 = {round(x1, 2)}\n'f'x_2 = {round(x2, 2)}')
+
