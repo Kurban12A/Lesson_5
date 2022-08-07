@@ -1,0 +1,47 @@
+students_mark = {}
+
+"""ДЛЯ ТЕСТА цмиханов курбан, иванов иван, александр иванов"""
+"""Оценка добавляется по ФИО студента"""
+
+while True:
+    commands = input('Введите команду: ')
+
+    if "add" in commands:
+        add_students = input('Ввeдите данные: ').split()
+        name = add_students[0].title()
+        sname = add_students[1].title()
+        students_mark[f'{name} {sname}'] = []
+        print("OK")
+
+    if "all" in commands:
+        count = 0
+        dict_st = {k: v for k, v in students_mark.items()}
+        for k, v in dict_st.items():
+            if v == []:
+                count = count + 1
+                print(f'{count}.', k, [*v])
+            if v != []:
+                count = count + 1
+                print(f'{count}.', k, [*v])
+
+    if "mark" in commands:
+        name_students = ' '.join(map(str, input('Ввeдите ФИО студента: ').split())).title()
+        mark = int(input('Введите оценку: '))
+        for key, val in students_mark.items():
+            if key == name_students:
+                val.append(mark)
+                print('OK')
+
+    if "avg" in commands:
+        count = 0
+        for key, val in students_mark.items():
+            count = count + 1
+            print(f'{count}. Средний балл студента {key} = ', sum(val) / 2)
+
+    if "exit" in commands:
+        print('Exit')
+        break
+
+
+
+
